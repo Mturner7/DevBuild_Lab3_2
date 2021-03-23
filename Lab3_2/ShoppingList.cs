@@ -5,7 +5,7 @@ namespace Lab3_2
 {
     class ShoppingList
     {
-        private static Dictionary<string, double> Menu = new Dictionary<string, double>() 
+        private static Dictionary<string, decimal> Menu = new Dictionary<string, decimal>() 
         {
             {"Honeydew Melons", 2.76 }, {"Chef's Surprise", 4.51},
             {"Pizza", 99.11}, {"Ice Cream", 42.44},
@@ -13,11 +13,11 @@ namespace Lab3_2
             {"Whole Milk", 20.32}, {"Lettuce", 10.30}
         };
 
-        private static List<double> prices = new List<double>();
+        private static List<decimal> prices = new List<decimal>();
         private static List<string> items = new List<string>();
         private static List<int> quantities = new List<int>();
         
-        private static double sum = 0;
+        private static decimal sum = 0;
         private static int lowIndex = 0;
         private static int highIndex = 0;
 
@@ -28,13 +28,13 @@ namespace Lab3_2
             Console.WriteLine($"{"======", -25} {"======", -15}");
 
             //Printing the Menu
-            foreach (KeyValuePair<string, double> item in Menu)
+            foreach (KeyValuePair<string, decimal> item in Menu)
             {
                 Console.WriteLine($"{item.Key,-25} {$"${item.Value:0.00}", -15}"); 
             }
         }
 
-        private static void addItem(string item, double value, int quantity)
+        private static void addItem(string item, decimal value, int quantity)
         {
             int index;
             if (!items.Contains(item))
@@ -62,7 +62,7 @@ namespace Lab3_2
 
         private static void viewReceipt()
         {
-            double average = sum / items.Count; //Average price of the order
+            decimal average = sum / items.Count; //Average price of the order
 
             //Printing the receipt
             Console.WriteLine($"\nYour total is ${sum:0.00}. \nYour receipt: ");
@@ -78,7 +78,7 @@ namespace Lab3_2
         
         static void Main(string[] args)
         {
-            double value;
+            decimal value;
             string input;
             bool shopping = true;
             int quantity = 1;
@@ -89,7 +89,7 @@ namespace Lab3_2
                 //Printing the menu and prompting the user
                 viewMenu();
                 Console.Write("\nWhat would you like to order? ");
-                input = parseInput(Console.ReadLine());
+                input = Console.ReadLine();
                 
 
                 if (Menu.TryGetValue(input, out value)) //Checking to see if the user's input is a valid key
