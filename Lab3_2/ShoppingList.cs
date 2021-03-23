@@ -12,7 +12,7 @@ namespace Lab3_2
             {"Clams", 92.91}, {"Fresh Yogurt", 3.21},
             {"Whole Milk", 20.32}, {"Lettuce", 10.30}
         };
-        // Customer lists
+
         private static List<double> prices = new List<double>();
         private static List<string> items = new List<string>();
         private static List<int> quantities = new List<int>();
@@ -57,7 +57,7 @@ namespace Lab3_2
             if (prices[index] > prices[highIndex]) highIndex = index;
 
             sum += value * quantity; //Keeping track of the user's total price
-            Console.WriteLine($"\nAdded '{item}' priced at ${value:0.00} to your cart!\n");
+            Console.WriteLine($"\nAdded '{item}' x{quantity} priced at ${value:0.00} (each) to your cart!\n");
         }
 
         private static void viewReceipt()
@@ -89,7 +89,8 @@ namespace Lab3_2
                 //Printing the menu and prompting the user
                 viewMenu();
                 Console.Write("\nWhat would you like to order? ");
-                input = Console.ReadLine();
+                input = parseInput(Console.ReadLine());
+                
 
                 if (Menu.TryGetValue(input, out value)) //Checking to see if the user's input is a valid key
                 {
