@@ -53,10 +53,10 @@ namespace Lab3_2
         {
             double average = sum / items.Count; //Average price of the order
 
-            Console.WriteLine($"\nYour total is ${sum:0.00}. \nHere's your receipt: ");
+            Console.WriteLine($"\nYour total is ${sum:0.00}. \nYour receipt: ");
             for (int i = 0; i < items.Count; i++)
             {
-                Console.WriteLine($"{items[i],-18} {$"${prices[i]:0.00}",-15}");
+                Console.WriteLine($"{items[i]} (x{quantities[i]}) {$"${prices[i]:0.00}",15}");
             }
 
             Console.WriteLine($"\nThe average price for this order was ${average:0.00}");
