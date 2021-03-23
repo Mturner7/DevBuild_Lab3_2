@@ -7,10 +7,10 @@ namespace Lab3_2
     {
         private static Dictionary<string, decimal> Menu = new Dictionary<string, decimal>() 
         {
-            {"Honeydew Melons", 2.76 }, {"Chef's Surprise", 4.51},
-            {"Pizza", 99.11}, {"Ice Cream", 42.44},
-            {"Clams", 92.91}, {"Fresh Yogurt", 3.21},
-            {"Whole Milk", 20.32}, {"Lettuce", 10.30}
+            {"Honeydew Melons", 2.76m }, {"Chef's Surprise", 4.51m},
+            {"Pizza", 99.11m}, {"Ice Cream", 42.44m},
+            {"Clams", 92.91m}, {"Fresh Yogurt", 3.21m},
+            {"Whole Milk", 20.32m}, {"Lettuce", 10.30m}
         };
 
         private static List<decimal> prices = new List<decimal>();
@@ -30,7 +30,7 @@ namespace Lab3_2
             //Printing the Menu
             foreach (KeyValuePair<string, decimal> item in Menu)
             {
-                Console.WriteLine($"{item.Key,-25} {$"${item.Value:0.00}", -15}"); 
+                Console.WriteLine($"{item.Key,-25} {$"${item.Value:0.00}", -15}");
             }
         }
 
@@ -72,8 +72,8 @@ namespace Lab3_2
             }
             //Printing the average price
             Console.WriteLine($"\nThe average price for this order was ${average:0.00}");
-            Console.WriteLine($"Most Expensive Item: {items[highIndex]}");
-            Console.WriteLine($"Least Expensive Item: {items[lowIndex]}");
+            Console.WriteLine($"Most Expensive Item(s): {items[highIndex]}");
+            Console.WriteLine($"Least Expensive Item(s): {items[lowIndex]}\n\n");
         }
         
         static void Main(string[] args)
@@ -107,15 +107,15 @@ namespace Lab3_2
                 do //Continuously prompt the user to continue until the correct input (y/n) is received
                 {
                     Console.Write("Would you like to order something else? (enter 'y' or 'n'): ");
-                    input = Console.ReadLine();
+                    input = Console.ReadLine().ToLower();
                 } while (input != "y" && input != "n");
 
                 if (input == "n") shopping = false;
             }
-            //Printing the user's receipt 
-            viewReceipt();
+             
+            viewReceipt(); //Printing the user's receipt
 
-            Console.WriteLine("\nYour items will be delivered tomorrow morning. \nThank you for using this software!\n");
+            Console.WriteLine("Thank you for using this software!\n");
         }
     }
 }
