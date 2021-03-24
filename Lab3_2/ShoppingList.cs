@@ -40,6 +40,7 @@ namespace Lab3_2
             if (!items.Contains(item))
             {
                 //Adding the item's quantity, price, and name to the proper lists
+                //if the user doesn't have the item in their cart
                 prices.Add(value * quantity);
                 items.Add(item); 
                 quantities.Add(quantity);
@@ -62,13 +63,16 @@ namespace Lab3_2
 
         private static void viewReceipt()
         {
+            Console.Clear();
+
             decimal average = sum / items.Count; //Average price of the order
 
             //Printing the receipt
-            Console.WriteLine($"\nYour total is ${sum:0.00}. \nYour receipt: ");
+            Console.WriteLine($"\nYour total is ${sum:0.00}. \n");
             for (int i = 0; i < items.Count; i++)
             {
-                Console.WriteLine($"{items[i], -25} x{quantities[i], -10} {$"${prices[i]:0.00}",10}");
+                Console.WriteLine("=======================================");
+                Console.WriteLine($"{items[i], -20} x{quantities[i], -10} {$"${prices[i]:0.00}",5}");
             }
             //Printing the average price
             Console.WriteLine($"\nThe average price for this order was ${average:0.00}");
@@ -90,11 +94,11 @@ namespace Lab3_2
                 viewMenu();
                 Console.Write("\nWhat would you like to order? ");
                 input = Console.ReadLine();
-                
+                     
 
                 if (Menu.TryGetValue(input, out value)) //Checking to see if the user's input is a valid key
                 {
-                    Console.Write($"How many {input}(s) would you like to order? ");
+                    Console.Write($"How many {input}(s) would you like to buy? ");
                     quantity = Int32.Parse(Console.ReadLine());
                     addItem(input, value, quantity);
                 }
